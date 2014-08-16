@@ -117,7 +117,7 @@ class Avatar
      */
     public static function setupOptions(array $options)
     {
-        array_merge(self::$options, $options);
+        self::$options = array_merge(self::$options, $options);
     }
 
     /**
