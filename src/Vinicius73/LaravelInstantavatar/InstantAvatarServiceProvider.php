@@ -1,8 +1,8 @@
-<?php namespace Vinicius73\LaravelInstantavatar;
+<?php namespace Vinicius73\LaravelInstantAvatar;
 
 use Illuminate\Support\ServiceProvider;
 
-class LaravelInstantavatarServiceProvider extends ServiceProvider
+class InstantAvatarServiceProvider extends ServiceProvider
 {
 
     /**
@@ -19,7 +19,7 @@ class LaravelInstantavatarServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->package('vinicius73/laravel-instantavatar', 'instantavatar');
+        $this->package('vinicius73/laravel-instantavatar', 'InstantAvatar');
     }
 
     /**
@@ -29,7 +29,14 @@ class LaravelInstantavatarServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(
+            'vinicius73.instantavatar',
+            function ($app) {
+                $config = $app['config']->get('InstantAvatar::config', array());
+
+                return new LaravelInstantAvatar($config);
+            }
+        );
     }
 
     /**

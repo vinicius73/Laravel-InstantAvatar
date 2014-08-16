@@ -10,16 +10,11 @@
     "require": {
         "php": ">=5.3.0",
         "ext-gd": "*",
-        "illuminate/support": "4.1.*",
-        "illuminate/filesystem":"4.1.*",
-        "illuminate/routing": "4.1.*"
+        "illuminate/support": "4.1.*"
     },
     "autoload": {
-        "classmap": [
-            "src/migrations"
-        ],
         "psr-0": {
-            "Vinicius73\\LaravelInstantavatar\\": "src/"
+            "Vinicius73\\LaravelInstantAvatar\\": "src/"
         }
     },
     "minimum-stability": "stable"
