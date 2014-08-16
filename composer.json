@@ -1,0 +1,26 @@
+{
+    "name": "vinicius73/laravel-instantavatar",
+    "description": "",
+    "authors": [
+        {
+            "name": "Vinicius Reis",
+            "email": "luiz.vinicius73@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "ext-gd": "*",
+        "illuminate/support": "4.1.*",
+        "illuminate/filesystem":"4.1.*",
+        "illuminate/routing": "4.1.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Vinicius73\\LaravelInstantavatar\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
