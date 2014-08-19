@@ -28,7 +28,7 @@ class Avatar
         'heigth'   => 100,
         'fontsize' => 50,
         'chars'    => 2,
-        'font'     => 'InstantAvatar::Comfortaa-Regular.ttf',
+        'font'     => array('InstantAvatar::Comfortaa-Regular.ttf'),
         'overlay'  => 'InstantAvatar::glass.png'
     );
 
@@ -42,7 +42,7 @@ class Avatar
 
         $options = array_merge(self::$options, $options);
 
-        $font     = self::get_path(array_get($options, 'font'));
+        $font     = self::getFont();
         $fontSize = array_get($options, 'fontsize');
         $width    = array_get($options, 'width');
         $heigth   = array_get($options, 'heigth');
@@ -96,7 +96,6 @@ class Avatar
         return $this;
     }
 
-
     /**
      * print image
      *
@@ -130,7 +129,6 @@ class Avatar
         self::$assetsDir = $dir;
     }
 
-
     /**
      * @param $path
      *
@@ -147,5 +145,16 @@ class Avatar
         endif;
 
         return $path;
+    }
+
+    /**
+     * @return string
+     */
+    private static function getFont()
+    {
+        $fonts = array_get(self::$options, 'font');
+        $font  = array_rand($fonts);
+
+        return self::get_path($fonts[$font]);
     }
 }
