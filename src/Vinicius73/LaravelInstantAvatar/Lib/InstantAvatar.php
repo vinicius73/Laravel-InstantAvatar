@@ -9,7 +9,7 @@ class InstantAvatar
     protected $fontFace, $fontSize;
     protected $width, $height, $chars;
     protected $avatar = null, $overlay = null;
-    protected $numBackgroundStyles = 4;
+    protected $numBackgroundStyles = 10;
 
 
     // One color scheme per row: bg1, bg2, text
