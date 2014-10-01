@@ -2,18 +2,14 @@
 
 // InstantAvatar v1.0
 // (c) 2008 - Dominic Szablewski - www.phoboslab.org
-// (c) 2014 - Vinicius reis
+// (c) 2014 - Vinicius Reis
 
-class InstantAvatar
+class InstantAvatar extends AbstractLib
 {
-    protected $fontFace, $fontSize;
-    protected $width, $height, $chars;
-    protected $avatar = null, $overlay = null;
-    protected $numBackgroundStyles = 10;
+   protected $numBackgroundStyles = 10;
 
-
-    // One color scheme per row: bg1, bg2, text
-    protected static $colorSchemes = array(
+   // One color scheme per row: bg1, bg2, text
+   protected $colorSchemes = array(
         array(0xcff09e, 0xa8dba8, 0x3b8686),
         array(0x9e0838, 0xcc2227, 0xbad14f),
         array(0x314763, 0xb81f69, 0xe3d8b8),
@@ -56,26 +52,7 @@ class InstantAvatar
     );
 
 
-    public function __construct(
-        $fontFace,
-        $fontSize = 18,
-        $width = 40,
-        $height = 40,
-        $chars = 2,
-        $overlayPNG = null
-    ) {
-        $this->width    = $width;
-        $this->height   = $height;
-        $this->fontFace = $fontFace;
-        $this->fontSize = $fontSize;
-        $this->chars    = $chars;
-        if ($overlayPNG) {
-            $this->overlay = imageCreateFromPNG($overlayPNG);
-        }
-    }
-
-
-    /**
+   /**
      * Destroy image
      */
     public function __destruct()
@@ -96,7 +73,7 @@ class InstantAvatar
      */
     public function generate($name, $colorScheme, $backgroundStyle)
     {
-        list($bgColor1, $bgColor2, $textColor) = self::$colorSchemes[$colorScheme];
+       list($bgColor1, $bgColor2, $textColor) = $this->colorSchemes[$colorScheme];
 
         $this->avatar = imageCreateTrueColor($this->width, $this->height);
         imageFill($this->avatar, 0, 0, $bgColor1);
@@ -252,63 +229,5 @@ class InstantAvatar
                 imageSY($this->overlay)
             );
         }
-    }
-
-
-    /**
-     * @param string $name
-     */
-    public function generateRandom($name)
-    {
-        $this->generate(
-            $name,
-            rand(0, count(self::$colorSchemes) - 1),
-            rand(0, $this->numBackgroundStyles - 1)
-        );
-    }
-
-    /**
-     * @return null
-     */
-    public function getAvatar()
-    {
-        return $this->avatar;
-    }
-
-
-    /**
-     * @param string $path
-     * @return bool
-     */
-    public function writePNG($path)
-    {
-        if ($this->avatar) {
-            imagePNG($this->avatar, $path);
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * @return bool
-     */
-    public function passThru()
-    {
-        if ($this->avatar) {
-            imagePNG($this->avatar);
-            return true;
-        }
-        return false;
-    }
-
-
-    /**
-     * display image
-     */
-    public function display()
-    {
-        header("Content-type: image/png");
-        imagepng($this->avatar);
-        imagedestroy($this->avatar);
     }
 }

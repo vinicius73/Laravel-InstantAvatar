@@ -11,5 +11,6 @@ return array(
         'InstantAvatar::Ubuntu-Regular.ttf',
         'InstantAvatar::DroidSans.ttf'
     ),
-    'overlay'  => 'InstantAvatar::glass.png'
+    'overlay'  => 'InstantAvatar::glass.png',
+    'flat'     => false
 );

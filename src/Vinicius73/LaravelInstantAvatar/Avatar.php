@@ -1,6 +1,7 @@
 <?php namespace Vinicius73\LaravelInstantAvatar;
 
-use Vinicius73\LaravelInstantAvatar\Lib\InstantAvatar as InstantAvatar;
+use Vinicius73\LaravelInstantAvatar\Lib\FlatAvatar;
+use Vinicius73\LaravelInstantAvatar\Lib\InstantAvatar;
 use Str;
 
 class Avatar
@@ -29,7 +30,8 @@ class Avatar
         'fontsize' => 50,
         'chars'    => 2,
         'font'     => array('InstantAvatar::Comfortaa-Regular.ttf'),
-        'overlay'  => 'InstantAvatar::glass.png'
+        'overlay'  => 'InstantAvatar::glass.png',
+        'flat'     => false
     );
 
     /**
@@ -48,8 +50,13 @@ class Avatar
         $heigth   = array_get($options, 'heigth');
         $overlay  = self::get_path(array_get($options, 'overlay'));
         $chars    = array_get($options, 'chars');
+        $flat     = array_get($options, 'flat', false);
 
-        self::$instantAvatar = new InstantAvatar($font, $fontSize, $width, $heigth, $chars, $overlay);
+        if($flat):
+           self::$instantAvatar = new FlatAvatar($font, $fontSize, $width, $heigth, $chars, $overlay);
+        else:
+           self::$instantAvatar = new InstantAvatar($font, $fontSize, $width, $heigth, $chars, $overlay);
+        endif;
     }
 
     /**
