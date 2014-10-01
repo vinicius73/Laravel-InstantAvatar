@@ -3,11 +3,16 @@
 abstract class AbstractLib
 {
 
-   protected $fontFace, $fontSize;
-   protected            $width, $height, $chars;
-   protected            $avatar = null, $overlay = null;
-   protected            $numBackgroundStyles;
-   protected            $colorSchemes;
+   protected $fontFace;
+   protected $fontSize;
+   protected $width;
+   protected $height;
+   protected $chars;
+   protected $avatar;
+   protected $overlay;
+
+   protected $numBackgroundStyles;
+   protected $colorSchemes;
 
 
    public function __construct(
@@ -23,12 +28,60 @@ abstract class AbstractLib
       $this->fontFace = $fontFace;
       $this->fontSize = $fontSize;
       $this->chars = $chars;
+
       if ($overlayPNG) {
          $this->overlay = imageCreateFromPNG($overlayPNG);
       }
    }
 
+   /**
+    * @param string $name
+    * @param int    $colorScheme
+    * @param int    $backgroundStyle
+    *
+    * @return $this
+    */
    abstract function generate($name, $colorScheme, $backgroundStyle);
+
+   /**
+    * @param $string
+    * @param $stringColor
+    */
+   protected function drawString($string, $stringColor)
+   {
+      $string = substr($string, 0, $this->chars);
+
+      // Draw the first few chars of the name
+      imageTTFText(
+         $this->avatar,
+         $this->fontSize,
+         0,
+         4,
+         $this->height - $this->fontSize / 2,
+         $stringColor,
+         $this->fontFace,
+         $string
+      );
+   }
+
+   /**
+    * Copy the overlay on top
+    */
+   protected function  copyOverlay()
+   {
+      if ($this->overlay) {
+         imageCopy(
+            $this->avatar,
+            $this->overlay,
+            0,
+            0,
+            0,
+            0,
+            imageSX($this->overlay),
+            imageSY($this->overlay)
+         );
+      }
+   }
 
    /**
     * @param string $name
@@ -83,12 +136,25 @@ abstract class AbstractLib
 
 
    /**
-    * display image
+    * Display image
     */
    public function display()
    {
       header("Content-type: image/png");
       imagepng($this->avatar);
       imagedestroy($this->avatar);
+   }
+
+   /**
+    * Destroy image
+    */
+   public function __destruct()
+   {
+      if ($this->avatar) {
+         @imageDestroy($this->avatar);
+      }
+      if ($this->overlay) {
+         @imageDestroy($this->overlay);
+      }
    }
 }

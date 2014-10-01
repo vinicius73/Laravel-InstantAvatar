@@ -1,12 +1,10 @@
 <?php namespace Vinicius73\LaravelInstantAvatar\Lib;
 
-// FlatAvatar v0.1
+// FlatAvatar v0.2
 // (c) 2014 - Vinicius Reis
 
 class FlatAvatar extends AbstractLib
 {
-
-   // One color scheme per row: bg
    protected $colorSchemes = array(
       0xff4040,
       0x7f2020,
@@ -52,40 +50,23 @@ class FlatAvatar extends AbstractLib
       0xd96c7b
    );
 
+   /**
+    * @param string $name
+    * @param int    $colorScheme
+    * @param int    $backgroundStyle
+    *
+    * @return $this
+    */
    public function generate($name, $colorScheme, $backgroundStyle = null)
    {
       $name = strtoupper(substr($name, 0, $this->chars));
       $bgColor = $this->colorSchemes[$colorScheme];
 
-      $textColor = 0xFFFFFF;
-
       $this->avatar = imageCreateTrueColor($this->width, $this->height);
       imageFill($this->avatar, 0, 0, $bgColor);
 
-      // Draw the first few chars of the name
-      imageTTFText(
-         $this->avatar,
-         $this->fontSize,
-         0,
-         4,
-         $this->height - $this->fontSize / 2,
-         $textColor,
-         $this->fontFace,
-         $name
-      );
+      $this->drawString($name, 0xFFFFFF);
 
-      // Copy the overlay on top
-      if ($this->overlay) {
-         imageCopy(
-            $this->avatar,
-            $this->overlay,
-            0,
-            0,
-            0,
-            0,
-            imageSX($this->overlay),
-            imageSY($this->overlay)
-         );
-      }
+      return $this;
    }
 }
