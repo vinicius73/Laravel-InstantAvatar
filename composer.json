@@ -1,6 +1,7 @@
 {
     "name": "vinicius73/laravel-instantavatar",
-    "description": "Create a very pretty random avatars with ease.",
+    "description": "Create a very pretty random avatars with ease. Package for Laravel",
+    "tags": ["avatar", "instant avatars", "generate", "images"],
     "authors": [
         {
             "name": "Vinicius Reis",
