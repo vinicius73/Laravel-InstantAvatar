@@ -16,13 +16,13 @@ Run `composer update` or `php composer.phar update`.
 After composer command, add new service provider in `app/config/app.php` :
 
 ```php
-'Vinicius73\LaravelInstantAvatar\InstantAvatarServiceProvider',
+'Vinicius73\InstantAvatar\InstantAvatarServiceProvider',
 ```
 
 Now, add new aliases in `app/config/app.php`.
 
 ```php
-'IAvatar' => 'Vinicius73\LaravelInstantAvatar\Facade\InstantAvatarFacade',
+'IAvatar' => 'Vinicius73\InstantAvatar\Facade\InstantAvatarFacade',
 ```
 
 Finally publish the configuration file of the package `php artisan config:publish vinicius73/laravel-instantavatar`

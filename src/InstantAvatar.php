@@ -1,10 +1,10 @@
-<?php namespace Vinicius73\LaravelInstantAvatar;
+<?php namespace Vinicius73\IAvatar;
 
-class LaravelInstantAvatar
+class InstantAvatar
 {
 
     /**
-     * @var \Vinicius73\LaravelInstantAvatar\Avatar
+     * @var \Vinicius73\IAvatar\Avatar
      */
     private $avatar;
 
@@ -20,7 +20,7 @@ class LaravelInstantAvatar
     /**
      * @param string $string
      *
-     * @return \Vinicius73\LaravelInstantAvatar\Avatar
+     * @return \Vinicius73\IAvatar\Avatar
      */
     public function random($string)
     {
@@ -32,7 +32,7 @@ class LaravelInstantAvatar
      * @param string $colorScheme
      * @param string $backgroundStyle
      *
-     * @return \Vinicius73\LaravelInstantAvatar\Avatar
+     * @return \Vinicius73\IAvatar\Avatar
      */
     public function create($name, $colorScheme, $backgroundStyle)
     {

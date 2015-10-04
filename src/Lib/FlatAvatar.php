@@ -1,4 +1,4 @@
-<?php namespace Vinicius73\LaravelInstantAvatar\Lib;
+<?php namespace Vinicius73\IAvatar\Lib;
 
 // FlatAvatar v0.2
 // (c) 2014 - Vinicius Reis

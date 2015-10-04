@@ -1,7 +1,7 @@
-<?php namespace Vinicius73\LaravelInstantAvatar;
+<?php namespace Vinicius73\IAvatar;
 
-use Vinicius73\LaravelInstantAvatar\Lib\FlatAvatar;
-use Vinicius73\LaravelInstantAvatar\Lib\InstantAvatar;
+use Vinicius73\IAvatar\Lib\FlatAvatar;
+use Vinicius73\IAvatar\Lib\InstantAvatar;
 use Str;
 
 class Avatar

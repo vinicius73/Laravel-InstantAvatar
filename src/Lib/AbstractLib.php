@@ -1,4 +1,4 @@
-<?php namespace Vinicius73\LaravelInstantAvatar\Lib;
+<?php namespace Vinicius73\IAvatar\Lib;
 
 abstract class AbstractLib
 {

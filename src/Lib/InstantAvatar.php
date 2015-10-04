@@ -1,4 +1,4 @@
-<?php namespace Vinicius73\LaravelInstantAvatar\Lib;
+<?php namespace Vinicius73\IAvatar\Lib;
 
 // InstantAvatar v1.0
 // (c) 2008 - Dominic Szablewski - www.phoboslab.org
