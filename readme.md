@@ -8,7 +8,7 @@ Create a very pretty random avatars with ease.
 Add the new required package in your composer.json
 
 ```
-"vinicius73/laravel-instantavatar": "dev-master"
+"vinicius73/laravel-instantavatar": "~1.1"
 ```
 
 Run `composer update` or `php composer.phar update`.
@@ -16,16 +16,16 @@ Run `composer update` or `php composer.phar update`.
 After composer command, add new service provider in `app/config/app.php` :
 
 ```php
-'Vinicius73\InstantAvatar\InstantAvatarServiceProvider',
+Vinicius73\IAvatar\IAvatarServiceProvider::class,
 ```
 
 Now, add new aliases in `app/config/app.php`.
 
 ```php
-'IAvatar' => 'Vinicius73\InstantAvatar\Facade\IAvatarFacade',
+'IAvatar' => Vinicius73\IAvatar\Facade\IAvatarFacade::class,
 ```
 
-Finally publish the configuration file of the package `php artisan config:publish vinicius73/laravel-instantavatar`
+Finally publish the configuration file of the package `php artisan vendor:publish`
 
 ## Usage
 
