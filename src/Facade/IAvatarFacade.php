@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Facade;
 
-class InstantAvatarFacade extends Facade
+class IAvatarFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {

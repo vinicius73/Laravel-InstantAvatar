@@ -11,7 +11,7 @@ class InstantAvatar
     public function __construct(array $options)
     {
         Avatar::setupOptions($options);
-        Avatar::setupAssetsDir(dirname(__FILE__) . '/../../assets/');
+        Avatar::setupAssetsDir(base_path('resources/assets/iavatar'));
 
         $this->avatar = new Avatar();
     }

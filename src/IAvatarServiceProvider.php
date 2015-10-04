@@ -22,7 +22,7 @@ class IAvatarServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(
-            'ivatar',
+            'iavatar',
             function ($app) {
                 $config = $app['config']->get('iavatar', []);
 

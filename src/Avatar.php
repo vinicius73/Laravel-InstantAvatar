@@ -2,7 +2,6 @@
 
 use Vinicius73\IAvatar\Lib\FlatAvatar;
 use Vinicius73\IAvatar\Lib\InstantAvatar;
-use Str;
 
 class Avatar
 {
@@ -143,10 +142,10 @@ class Avatar
      */
     private static function get_path($path)
     {
-        if (Str::startsWith($path, 'InstantAvatar::')):
+        if (starts_with($path, 'InstantAvatar::')):
             $path = str_replace('InstantAvatar::', '', $path);
             $path = self::$assetsDir . DIRECTORY_SEPARATOR . $path;
-        elseif (Str::startsWith($path, 'public::')):
+        elseif (starts_with($path, 'public::')):
             $path = str_replace('public::', '', $path);
             $path = public_path($path);
         endif;
